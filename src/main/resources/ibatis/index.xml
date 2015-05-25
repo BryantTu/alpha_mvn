@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="org.sky.ssh1.alpha.dao.StudentDAO">
+	<select id="getAllStudent" resultType="org.sky.ssh1.alpha.dbo.StudentDBO">
+		<![CDATA[
+		SELECT stuid studentNo, name studentName from t_student order by stuid desc
+		]]>
+	</select>
+
+	<update id="addStudent" parameterType="String">
+		insert into t_student(stuid, name)values(seq_student_id.nextval,#{stdName})
+	</update>
+
+	<update id="delStudent" parameterType="String">
+		delete from t_student where stuid=#{stdNo}
+	</update>
+
+</mapper>
